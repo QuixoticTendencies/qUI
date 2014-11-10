@@ -1,0 +1,47 @@
+addonname, namespace = ...
+
+local btn = CreateFrame("Button", "qHaul_Button" , MerchantFrame)
+btn:SetHeight(36)
+btn:SetWidth(36)
+local texture = btn:CreateTexture()
+texture:SetTexture("Interface\\Icons\\inv_misc_bag_10_black")
+texture:SetAllPoints(btn)
+btn:SetPoint("TOPLEFT", 5, -5)
+btn:SetScript("OnClick", qHaul_Button_OnClick)
+btn:SetFrameStrata("HIGH")
+btn:Show()
+btn:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+btn:Enable()
+
+local function qHaul_Button_OnClick(self, button, up)
+  print("You have clicked on " .. addonname .. "'s button with the " .. button)
+end
+
+local b = CreateFrame("Button", "TestButton", UIParent, "UIPanelButtonTemplate2")
+b:SetPoint("CENTER")
+b:RegisterForClicks("AnyUp", "AnyDown")
+local upDown = { [false] = "Up", [true] = "Down" }
+local function show(text, color)
+  DEFAULT_CHAT_FRAME:AddMessage(text, color, color, color)
+end
+local color
+b:SetScript("OnMouseDown", function(self, button)
+  color = .60
+  show(format("OnMouseDown: %s", button), color, color, color)
+end)
+b:SetScript("OnMouseUp", function(self, button)
+  color = .60
+  show(format("OnMouseUp: %s", button), color, color, color)
+end)
+b:SetScript("OnClick", function(self, button, down)
+  color = color + 0.1
+  show(format("OnClick: %s %s", button, upDown[down]), color, color, color)
+end)
+b:SetScript("PreClick", function(self, button, down)
+  color = color + 0.1
+  show(format("PreClick: %s %s", button, upDown[down]), color, color, color)
+end)
+b:SetScript("PostClick", function(self, button,down)
+  color = color + 0.1
+  show(format("PostClick: %s %s", button, upDown[down]),  color, color, color)
+end)

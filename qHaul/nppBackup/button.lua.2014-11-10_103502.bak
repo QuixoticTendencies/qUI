@@ -1,0 +1,18 @@
+addonname, namespace = ...
+
+local btn = CreateFrame("Button", "qHaul_Button" , MerchantFrame)
+btn:SetHeight(36)
+btn:SetWidth(36)
+local texture = btn:CreateTexture()
+texture:SetTexture("Interface\\Icons\\inv_misc_bag_10_black")
+texture:SetAllPoints(btn)
+btn:SetPoint("TOPLEFT", 5, -5)
+btn:SetScript("OnClick", qHaul_Button_OnClick)
+btn:SetFrameStrata("HIGH")
+btn:Show()
+btn:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+btn:Enable()
+
+local function qHaul_Button_OnClick(self, button)
+  print("You have clicked on " .. addonname .. "'s button with the " .. button)
+end

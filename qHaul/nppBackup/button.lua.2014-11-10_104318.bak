@@ -1,0 +1,46 @@
+addonname, namespace = ...
+
+local btn = CreateFrame("Button", "qHaul_Button" , MerchantFrame)
+btn:SetHeight(36)
+btn:SetWidth(36)
+local texture = btn:CreateTexture()
+texture:SetTexture("Interface\\Icons\\inv_misc_bag_10_black")
+texture:SetAllPoints(btn)
+btn:SetPoint("TOPLEFT", 5, -5)
+btn:SetScript("OnClick", qHaul_Button_OnClick)
+btn:SetFrameStrata("HIGH")
+btn:Show()
+btn:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+btn:Enable()
+
+
+local button = CreateFrame("Button", nil, mainframe)
+	button:SetPoint("CENTER", mainframe, "CENTER", 0, 0)
+	button:SetWidth(200)
+	button:SetHeight(50)
+	
+	button:SetText("test")
+	button:SetNormalFontObject("GameFontNormal")
+	
+	local ntex = button:CreateTexture()
+	ntex:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
+	ntex:SetTexCoord(0, 0.625, 0, 0.6875)
+	ntex:SetAllPoints()	
+	button:SetNormalTexture(ntex)
+	
+	local htex = button:CreateTexture()
+	htex:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
+	htex:SetTexCoord(0, 0.625, 0, 0.6875)
+	htex:SetAllPoints()
+	button:SetHighlightTexture(htex)
+	
+	local ptex = button:CreateTexture()
+	ptex:SetTexture("Interface/Buttons/UI-Panel-Button-Down")
+	ptex:SetTexCoord(0, 0.625, 0, 0.6875)
+	ptex:SetAllPoints()
+	button:SetPushedTexture(ptex)
+
+
+local function qHaul_Button_OnClick(self, button, up)
+  print("You have clicked on " .. addonname .. "'s button with the " .. button)
+end

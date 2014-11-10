@@ -7,8 +7,13 @@ local btn = CreateFrame("Button", "qHaul_Button" , MerchantFrame)
 		texture:SetTexture("Interface\\Icons\\inv_misc_bag_10_black")
 		texture:SetAllPoints(btn)
 		btn:SetPoint("TOPLEFT", 5, -5)
-		btn:SetScript("OnClick", function(self, button) print(button) end)
+		btn:SetScript("OnClick", function() print("You have clicked on " .. addonname .. "'s button with the " .. button) end)
 		btn:SetFrameStrata("HIGH")
 		btn:Show()
-		btn:RegisterForClicks("AnyUp")
+		btn:RegisterForClicks("LeftButtonUp", "RightButtonUp")
 		btn:Enable()
+
+
+local function qHaul_Button_OnClick(self, button, up)
+  print("You have clicked on " .. addonname .. "'s button with the " .. button)
+end
